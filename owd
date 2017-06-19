@@ -1,0 +1,30 @@
+use stu;
+
+create table school (
+    sdept char(5) not null,
+    major char(20) not null,
+    primary key(sdept)
+)character set = utf8;
+
+create table information (
+  sno char(10) primary key,
+  sname char(10) not null,
+  sex char(5) not null,
+  age char(3) not null,
+  sdept char(5) not null,
+  foreign key(sdept)references school(sdept)
+)character set = utf8;
+create table course (
+ cno char(5) primary key,
+ cname char(10) not null,
+  sdept char(5) not null,
+  foreign key(sdept)references school(sdept)
+)character set = utf8;
+create table score(
+ sno char(10),
+ cno char(5),
+ score char(3) not null,
+ primary key(sno,cno),
+ foreign key(sno)references information(sno),
+ foreign key(cno)references course(cno)
+)character set = utf8;
